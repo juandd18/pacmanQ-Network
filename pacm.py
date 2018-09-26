@@ -183,60 +183,14 @@ with tf.Session() as sess:
 			#copy main q-net weights to target q-network
 			if (global_step+1) % copy_steps == 0 and global_step > start_steps:
 				copy_target_to_main.run()
+				save_path = saver.save(sess,"/home/ubuntu/openai/pacman/model/model2.ckpt")
+				print("model saved in path: %s" % save_path)
 			obs = next_obs
 			epoch += 1
 			global_step += 1
 			episodic_reward += reward 
 		print('Epoch',epoch,'Reward',reward,episodic_reward,)
-	if ( i % 10 == 0):
-		save_path = saver.save(sess,"/home/ubuntu/openai/pacman/model/model2.ckpt")
-		print("model saved in path: %s" % save_path)
-
-
-
-
-
-
-
-
-
-
-
-
-								
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
